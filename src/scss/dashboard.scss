@@ -1,0 +1,9 @@
+.root {
+    .dashboard-container {
+        margin-left: 5px;
+        
+        h2 {
+            @include set-font("Roboto", 400);
+        }
+    }
+}

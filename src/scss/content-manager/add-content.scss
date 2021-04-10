@@ -1,0 +1,93 @@
+@use "../util/fonts" as *;
+@use "../util/color" as *;
+
+.root {
+    .new-content-page-holder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > div:not(.warningHolder) {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            margin-top: 25px;
+
+            border: 1px solid $tsmdark;
+            border-radius: 5px;
+            padding: 10px;
+
+            transition: all .2s ease;
+
+            @media screen and (max-width: 1200px) {
+                width: 50%;
+            }
+
+            @media screen and (max-width: 800px) {
+                width: 70%;
+            }
+
+            @media screen and (max-width: 600px) {
+                width: 80%;
+            }
+
+            @media screen and (max-width: 400px) {
+                width: 90%;
+                padding: 10px;
+            }
+        }
+
+        h2 {
+            @include set-font($roboto, 400);
+        }
+
+        .statusField {
+            visibility: none;
+            margin-bottom: 5px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            @include set-font($montserrat);
+
+            input {
+                padding: 5px;
+                margin-bottom: 5px;
+                border: 1px solid $tsmdark;
+                border-radius: 5px;
+
+                @include set-font($roboto, 300);
+            }
+
+            .submitBtn {
+                margin-top: 3px;
+                background-color: $tsmpink;
+                border: 1px solid $tsmpink;
+                border-radius: 5px;
+                color: white;
+                width: 40%;
+                transition: all .2s ease;
+
+                @media screen and (max-width: 800px) {
+                    width: initial;
+                }
+            }
+
+            .submitBtn:hover {
+                background-color: darken($tsmpink, 10%);
+                border: 1px solid darken($tsmpink, 10%);
+                cursor: pointer;
+                transition: all .2s ease;
+            }
+
+            .red-text {
+                color: #FF0000;
+            }
+        }
+    }
+}

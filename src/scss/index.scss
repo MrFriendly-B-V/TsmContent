@@ -1,0 +1,48 @@
+@forward "./nav.scss";
+@forward "./content-manager/home.scss";
+@forward "./content-manager/add-content.scss";
+@forward "./login/login.scss";
+
+@use "./util/animation.scss";
+@use "./util/color";
+@use "./util/fonts";
+
+html, body {
+    height: 99%;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    @include animation.fade-in(0.75s);
+
+}
+
+.root {
+    height: 100%;
+    width: 100%;
+}
+
+.warningRed {
+    color: color.$warningred;
+    border: 1px solid color.$warningred;
+    border-radius: 5px;
+    width: calc(100% - 2*5px - 2*1px); //2*5px -> Padding, 2*1px -> Border
+    padding: 5px;
+    @include fonts.set-font(fonts.$roboto);
+}
+
+.warningHolder {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+.defaultNoShow {
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0px !important;
+}

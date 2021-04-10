@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="theme-color" content="#ec008c">
+        <meta name="author" content="Tobias de Bruijn">
+        <meta name="keywords" content="mrfriendly, twinsight, media, advertisement, advertentie, twinsight-media, urinoir, video, reclame, ads, ad">
+        <meta name="description" content="Upload videos naar uw Twinsight Media displays">
+        <title> Twinsight Media - Login</title>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+        <script src="/dist/main.js"></script>
+    </head>
+    <body data-login-type="login">
+        <main>
+            <div class="login-container">
+                <div class="container">
+                    <p class="title"> Login </p>
+                    <p class="description"> Please login to continue </p>
+                    <div id="status" style="visibility:hidden;"></div>
+
+                    <div class="formgroup">
+                        <form class="login-form" id="login-form" method="POST" target="hidden-iframe">
+                            <input type="email" name="email" id="email" aria-label="E-Mail Address" placeholder="E-mail address">
+                            <input type="password" name="password" id="password" aria-label="Password" placeholder="Password">
+                        </form>
+    
+                        <div class="link-and-submit">
+                            <a href="register.html"><p>Register</p></a>
+                            <button id="login-submit">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <iframe id="hidden-iframe" name="hidden-iframe" style="width:0;height:0;visibility:hidden;"></iframe>
+        <script>
+            TSM.setupLogin();
+        </script>
+    </body>
+</html>

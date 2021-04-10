@@ -3,7 +3,7 @@
 const path = require('path');
 
 module.exports = {
-    devtool: 'inline-source-map',
+    devtool: "eval-cheap-source-map",
 	entry: './src/ts/index.ts',
 	output: {
 		filename: 'main.js',
@@ -35,5 +35,9 @@ module.exports = {
         //  on the global var jQuery
         "jquery": "jQuery"
     },
-    mode: 'production'
+    mode: 'production',
+    watchOptions: {
+        poll: true,
+        ignored: "/node_modules/"
+    }
 };

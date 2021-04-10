@@ -1,4 +1,4 @@
-@mixin animation-fade-in($animation-speed: 2s) {
+@mixin fade-in($animation-speed: 2s) {
     -webkit-animation: fadein $animation-speed; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein $animation-speed; /* Firefox < 16 */
     -ms-animation: fadein $animation-speed; /* Internet Explorer */

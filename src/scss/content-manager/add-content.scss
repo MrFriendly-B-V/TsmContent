@@ -20,6 +20,7 @@
             padding: 10px;
 
             transition: all .2s ease;
+            min-width: 340px;
 
             @media screen and (max-width: 1200px) {
                 width: 50%;
@@ -64,18 +65,28 @@
                 @include set-font($roboto, 300);
             }
 
+            .address-postal-number-holder {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .address-number {
+                    justify-content: flex-end;
+                }
+            }
+
             .submitBtn {
                 margin-top: 3px;
                 background-color: $tsmpink;
                 border: 1px solid $tsmpink;
                 border-radius: 5px;
                 color: white;
-                width: 40%;
                 transition: all .2s ease;
-
-                @media screen and (max-width: 800px) {
-                    width: initial;
-                }
             }
 
             .submitBtn:hover {

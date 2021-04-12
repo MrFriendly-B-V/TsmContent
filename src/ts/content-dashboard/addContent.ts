@@ -10,8 +10,11 @@ export function loadAddContent() {
         case 0:
             interface UserDetailsForm extends HTMLFormElement {
                 user_name:      HTMLInputElement,
-                dateofbirth:    HTMLInputElement,
                 company:        HTMLInputElement,
+                phone_number:   HTMLInputElement,
+                address_street: HTMLInputElement,
+                address_postal: HTMLInputElement,
+                address_number: HTMLInputElement
             }
 
             //Get the user details
@@ -28,9 +31,6 @@ export function loadAddContent() {
 
                 let userDetailsForm = <UserDetailsForm> document.getElementById("userDetailsForm");
                 userDetailsForm.user_name.value = userDetails.name;
-
-                let dateofbirth = new Date(userDetails.date_of_birth);
-                userDetailsForm.dateofbirth.value = dateofbirth.getFullYear + "-" + dateofbirth.getMonth + "-" + dateofbirth.getDate();
 
                 userDetailsForm.company.value = userDetails.company ?? "";
             });
@@ -58,16 +58,7 @@ export function loadAddContent() {
 
                     return;
                 }
-
-                if(form.dateofbirth.value == null || form.dateofbirth.value == "" || form.dateofbirth.value == "yyyy-mm-dd") {
-                    statusField.style.visibility = 'visible';
-                    statusField.classList.value = "statusField warningRed";
-
-                    statusField.innerHTML = "Please fill in your date of birth.";
-
-                    return;
-                }
-
+                
                 statusField.style.visibility = "none";
                 statusField.classList.value = "statusField";
                 statusField.innerHTML = "";

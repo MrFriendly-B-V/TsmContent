@@ -8,13 +8,13 @@ export function loadAddContent() {
     
     switch(step) {
         case 0:
-            interface UserDetailsForm extends HTMLFormElement {
-                user_name:      HTMLInputElement,
-                company:        HTMLInputElement,
-                phone_number:   HTMLInputElement,
-                address_street: HTMLInputElement,
-                address_postal: HTMLInputElement,
-                address_number: HTMLInputElement
+            interface IUserDetailsForm extends HTMLFormElement {
+                full_name:          HTMLInputElement,
+                company:            HTMLInputElement,
+                phone_number:       HTMLInputElement,
+                address_street:     HTMLInputElement,
+                address_postal:     HTMLInputElement,
+                address_number:     HTMLInputElement,
             }
 
             //Get the user details
@@ -28,15 +28,34 @@ export function loadAddContent() {
 
             getUserDetailsReq.done(function(e) {
                 let userDetails = <Types.IGetUserDetailsResponse> e;
+                if(userDetails.status != 200) {
+                    if(userDetails.status == 404) {
+                        $.ajax({
+                            url: Config.NEW_USER_ENDPOINT,
+                            method: 'POST',
+                            data: {
+                                session_id: Util.getCookie("sessionid")
+                            }
+                        });
+                    }
+                    return;
+                }
 
-                let userDetailsForm = <UserDetailsForm> document.getElementById("userDetailsForm");
-                userDetailsForm.user_name.value = userDetails.name;
+                let userDetailsForm = <IUserDetailsForm> document.getElementById("userDetailsForm");
+                console.log(userDetails.name_base64);
+                userDetailsForm.full_name.value = atob(userDetails.name_base64 ?? "");
+                userDetailsForm.company.value = atob(userDetails.company_base64 ?? "");
+                userDetailsForm.phone_number.value = userDetails.phone_number.toString() ?? "";
+                userDetailsForm.address_street.value = atob(userDetails.addr_street_base64 ?? "");
+                userDetailsForm.address_postal.value = atob(userDetails.addr_postal_base64 ?? "");
+                userDetailsForm.address_number.value = userDetails.addr_number ?? "";
 
-                userDetailsForm.company.value = userDetails.company ?? "";
+                (<HTMLSelectElement> document.getElementById("address-country")).value = userDetails.addr_country ?? "NULL"; 
             });
 
             getUserDetailsReq.fail(function(e) {
-
+                //TODO
+                alert("TODO: getUserDetailsReq failed");
             });
 
             let step0holder = document.getElementById("step0");
@@ -45,12 +64,10 @@ export function loadAddContent() {
 
             let continueButton = document.getElementById("step0ContinueBtn");
             continueButton.addEventListener("click", function(e) {
-                let form = <UserDetailsForm> document.getElementById("userDetailsForm");
-                let date_components = form.dateofbirth.value.split("-");
-                let date = new Date(Number.parseInt(date_components[0]), Number.parseInt(date_components[1]), Number.parseInt(date_components[2]));
+                let form = <IUserDetailsForm> document.getElementById("userDetailsForm");
 
                 let statusField = document.getElementById("step0StatusField");
-                if(form.user_name.value == null || form.user_name.value == "") {
+                if(form.full_name.value == null || form.full_name.value == "") {
                     statusField.style.visibility = 'visible';
                     statusField.classList.value = "statusField warningRed";
 
@@ -58,7 +75,62 @@ export function loadAddContent() {
 
                     return;
                 }
-                
+
+                if(form.company.value == null || form.company.value == "") {
+                    statusField.style.visibility = 'visible';
+                    statusField.classList.value = "statusField warningRed";
+
+                    statusField.innerHTML = "Please fill in the name of the company you represent.";
+
+                    return;
+                }
+
+                if(form.phone_number.value == null || form.phone_number.value == "") {
+                    statusField.style.visibility = 'visible';
+                    statusField.classList.value = "statusField warningRed";
+
+                    statusField.innerHTML = "Please fill in your phone number.";
+
+                    return;
+                }
+
+                if(form.address_street.value == null || form.address_street.value == "") {
+                    statusField.style.visibility = 'visible';
+                    statusField.classList.value = "statusField warningRed";
+
+                    statusField.innerHTML = "Please fill in your address.";
+
+                    return;
+                }
+
+                if(form.address_postal.value == null || form.address_postal.value == "") {
+                    statusField.style.visibility = 'visible';
+                    statusField.classList.value = "statusField warningRed";
+
+                    statusField.innerHTML = "Please fill in your Postal Code/ZIP";
+
+                    return;
+                }
+
+                if(form.address_number.value == null || form.address_number.value == "") {
+                    statusField.style.visibility = 'visible';
+                    statusField.classList.value = "statusField warningRed";
+
+                    statusField.innerHTML = "Please fill in your house number";
+
+                    return;
+                }
+
+                let addressCountryField = <HTMLSelectElement> document.getElementById("address-country")
+                if(addressCountryField.value == null || addressCountryField.value == "NULL") {
+                    statusField.style.visibility = 'visible';
+                    statusField.classList.value = "statusField warningRed";
+
+                    statusField.innerHTML = "Please select your country.";
+
+                    return;
+                }
+
                 statusField.style.visibility = "none";
                 statusField.classList.value = "statusField";
                 statusField.innerHTML = "";
@@ -68,9 +140,13 @@ export function loadAddContent() {
                     method: 'POST',
                     data: {
                         session_id: Util.getCookie("sessionid"),
-                        full_name_base64: btoa(form.user_name.value),
-                        date_of_birth: date.valueOf(),
-                        company: (form.company.value != "") ? form.company.value : null 
+                        company_base64: btoa(form.company.value),
+                        name_base64: btoa(form.full_name.value),
+                        phone_number: Number.parseInt(form.phone_number.value.replace("+", "00").replace(" ", "")),
+                        addr_street_base64: btoa(form.address_street.value),
+                        addr_postal_base64: btoa(form.address_postal.value),
+                        addr_number: form.address_number.value,
+                        addr_country: addressCountryField.value
                     }
                 });
 
@@ -123,7 +199,7 @@ export function loadAddContent() {
 
                                 if(userLocationsReq.status != 200) {
                                     //TODO
-                                    alert("TODO");
+                                    alert("TODO: userLocationReq failed");
                                     return;
                                 }
 

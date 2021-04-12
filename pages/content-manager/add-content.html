@@ -32,8 +32,8 @@
                         <h2>Before you continue, we need some more details</h2>
                         <form name="userDetailsForm" id="userDetailsForm" class="enterUserDetails" method="POST">
                             <div id="step0StatusField" class="statusField"></div>
-                            <label for="user_name">Full name<span class="red-text">*</span></label>
-                            <input type="text" name="user_name" placeholder="Full name" required>
+                            <label for="full_name">Full name<span class="red-text">*</span></label>
+                            <input type="text" name="full_name" placeholder="Full name" required>
 
                             <label for="company">Company<span class="red-text">*</span></label>
                             <input type="text" name="company" placeholder="Company" required>
@@ -56,6 +56,11 @@
                                 </div>
                             </div>
 
+                            <label for="address-country">Country<span class="red-text">*</span></label>
+                            <select id="address-country" name="address-country">
+                                <option value="NULL">Select...</option>
+                                <option value="NL">The Netherlands</option>
+                            </select>
                             <input type="button" class="submitBtn" aria-label="Continue" value="Continue" id="step0ContinueBtn">
                         </form>
                     </div>

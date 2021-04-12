@@ -7,6 +7,7 @@ export const LOGOUT_ENDPOINT = "http://192.168.1.7:8080/auth/logout";
 //UserServer
 export const GET_USER_DETAILS_ENDPOINT = "http://192.168.1.7:8070/user/get";
 export const UPDATE_USER_DETAILS_ENDPOINT = "http://192.168.1.7:8070/user/update";
+export const NEW_USER_ENDPOINT = "http://192.168.1.7:8070/user/new";
 
 //SubscriptionServer
 export const GET_SUBSCRIBTION_DETAILS_ENDPOINT = "http://192.168.1.7:8090/subscription/details";

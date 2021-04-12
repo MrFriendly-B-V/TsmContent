@@ -15,12 +15,15 @@ export interface ISessionCheckResponse {
 
 //UserServer
 export interface IGetUserDetailsResponse {
-    status:         number;
-    user_id:        string;
-    email:          string;
-    date_of_birth:  number;
-    company:        string;
-    name:           string;
+    status:             number;
+    user_id:            string;
+    company_base64:     string;
+    name_base64:        string;
+    phone_number:       number;
+    addr_street_base64: string;
+    addr_postal_base64: string;
+    addr_number:        string;
+    addr_country:       string;
 }
 
 

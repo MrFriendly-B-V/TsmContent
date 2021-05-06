@@ -9,7 +9,7 @@ import * as Types from "../types";
 class SubscriptionResponse implements Types.ISubscriptionResponse {
     status:                 number;
     is_subscribed:          boolean;
-    subscription_type:      number;
+    subscription_type:      Types.SubscriptionType;
     subscription_features:  Types.SubscriptionFeature[]
 }
 
@@ -21,11 +21,10 @@ export function loadDashboard() {
 
         //Load the user's subscription type
         /*let getSubscriptionReq = $.ajax({
-            url: Config.GET_SUBSCRIBTION_DETAILS,
+            url: Config.GET_SUBSCRIBTION_ENDPOINT,
             method: 'POST',
             data: {
                 session_id: Util.getCookie("session_id"),
-                user_id: response.user_id
             }
         });
 
@@ -42,15 +41,15 @@ export function loadDashboard() {
         let subscription = new SubscriptionResponse();
         subscription.status = 200;
         subscription.is_subscribed = true;
-        subscription.subscription_type = 1;
-        subscription.subscription_features = [Types.SubscriptionFeature.CONTENT_BASIC];
+        subscription.subscription_type = Types.SubscriptionType.Active;
+        subscription.subscription_features = [Types.SubscriptionFeature.ContentBasic, Types.SubscriptionFeature.DeviceBasic];
 
         for(let i = 0; i < subscription.subscription_features.length; i++) {
             let subscriptionFeature = subscription.subscription_features[i];
 
             let sectionHolder = document.getElementById("sectionHolder")
             switch(subscriptionFeature) { 
-                case Types.SubscriptionFeature.CONTENT_BASIC:
+                case Types.SubscriptionFeature.ContentBasic:
                     let headerDiv = document.createElement("div");
                     headerDiv.classList.value = "sectionHeaderHolder";
                 

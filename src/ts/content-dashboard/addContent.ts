@@ -42,7 +42,6 @@ export function loadAddContent() {
                 }
 
                 let userDetailsForm = <IUserDetailsForm> document.getElementById("userDetailsForm");
-                console.log(userDetails.name_base64);
                 userDetailsForm.full_name.value = atob(userDetails.name_base64 ?? "");
                 userDetailsForm.company.value = atob(userDetails.company_base64 ?? "");
                 userDetailsForm.phone_number.value = userDetails.phone_number.toString() ?? "";
@@ -165,7 +164,7 @@ export function loadAddContent() {
             break;
         case 1:
             let loadUserSubscription = $.ajax({
-                url: Config.GET_SUBSCRIBTION_DETAILS_ENDPOINT,
+                url: Config.GET_SUBSCRIBTION_ENDPOINT,
                 method: 'POST',
                 data: {
                     session_id: Util.getCookie("sessionid")
@@ -175,10 +174,16 @@ export function loadAddContent() {
             loadUserSubscription.done(function(e) {
                 let subscriptionResponse = <Types.ISubscriptionResponse> e;
 
+                if(subscriptionResponse.subscription_type != Types.SubscriptionType.Active) {
+                    //TODO redirect to subscribe page
+                    alert("SubscriptionType != ACTIVEd")
+                    return;
+                }
+
                 for(let i = 0; i < subscriptionResponse.subscription_features.length; i++) {
                     let feature = subscriptionResponse.subscription_features[i];
                     switch(feature) {
-                        case Types.SubscriptionFeature.CONTENT_BASIC:
+                        case Types.SubscriptionFeature.DeviceBasic:
                             let ownedLocationsDiv = document.createElement("div");
                             ownedLocationsDiv.id = "ownedLocationsDiv";
                             ownedLocationsDiv.classList.value = "blockSelection";
@@ -199,7 +204,7 @@ export function loadAddContent() {
 
                                 if(userLocationsReq.status != 200) {
                                     //TODO
-                                    alert("TODO: userLocationReq failed");
+                                    alert("TODO: userLocationReq failed: " + userLocationsResponse.status);
                                     return;
                                 }
 
@@ -208,7 +213,7 @@ export function loadAddContent() {
 
                                     let locationDiv = document.createElement("div");
                                     locationDiv.classList.value = "item";
-                                    locationDiv.setAttribute("data-location-id", location.id);
+                                    locationDiv.id = location.id;
                                     locationDiv.setAttribute("data-selected", "false");
 
                                     locationDiv.innerHTML = location.name;
@@ -226,19 +231,45 @@ export function loadAddContent() {
 
                                     ownedLocationsDiv.appendChild(locationDiv);
                                 }
+
+                                document.getElementById("step1").classList.value = "";
                             });
 
                             userLocationsReq.fail(function(e) {
-                                let failStatusElement = document.createElement("h5");
+                                let failStatusElement = document.createElement("h3");
                                 failStatusElement.classList.value = "warningRed";
-                                failStatusElement.innerHTML = "Something went wrong. Please try again later"
-
-                                ownedLocationsDiv.appendChild(failStatusElement);
+                                failStatusElement.innerHTML = "Something went wrong. Please try again later."
+                
+                                let failStatusHolder = document.createElement("div");
+                                failStatusHolder.classList.value = "warningHolder";
+                
+                                failStatusHolder.appendChild(failStatusElement);
+                                document.getElementById("contentHolder").appendChild(failStatusHolder);
+                                return;
                             });
 
                             break;
                     }
                 }
+
+                let continueToStep2Button = document.createElement("button")
+                continueToStep2Button.classList.value = "step1-continue-btn";
+                continueToStep2Button.innerHTML = "Continue";
+
+                continueToStep2Button.addEventListener("click", (_e) => {
+                    let selectedLocations = document.querySelectorAll("[data-selected=true]");
+                    let selectedLocationsIds: string[] = new Array();
+
+                    selectedLocations.forEach((e) => {
+                        selectedLocationsIds.push(e.id);
+                    });
+
+                    window.sessionStorage.setItem("selectedLocations", selectedLocationsIds.join(","));
+
+                    window.location.href = "/pages/content-manager/add-content.html?step=2";
+                });
+
+                document.getElementById("step1").appendChild(continueToStep2Button);
             });
 
             loadUserSubscription.fail(function(e) {

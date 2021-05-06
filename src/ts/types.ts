@@ -31,12 +31,19 @@ export interface IGetUserDetailsResponse {
 export interface ISubscriptionResponse {
     status:                 number;
     is_subscribed:          boolean;
-    subscription_type:      number;
+    subscription_type:      SubscriptionType;
     subscription_features:  SubscriptionFeature[];
 }
 
+export enum SubscriptionType {
+    Active =            "ACTIVE",
+    RequiresPayment =   "REQUIRES_PAYMENT",
+    Ended =             "ENDED"
+}
+
 export enum SubscriptionFeature {
-    CONTENT_BASIC
+    ContentBasic =      "CONTENT_BASIC",
+    DeviceBasic =       "DEVICE_BASIC"
 }
 
 

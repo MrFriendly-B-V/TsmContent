@@ -100,5 +100,56 @@
                 color: #FF0000;
             }
         }
+
+        #step1 {
+            .blockSelection {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .item {
+                    border: 1px solid $tsmdark;
+                    border-radius: 5px;
+
+                    padding: 10px;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+
+                    user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -webkit-user-select: none;
+                }
+
+                .item:hover {
+                    border: 1px solid $tsmpink;
+                    cursor: pointer;
+
+                    transition: .5s ease;
+                }
+
+                .item-selected {
+                    border: 1px solid $tsmpink;
+                }
+            }
+
+            .step1-continue-btn {
+                margin-top: 3px;
+                background-color: $tsmpink;
+                border: 1px solid $tsmpink;
+                border-radius: 5px;
+                color: white;
+                transition: all .2s ease;
+                width: 100%;
+                padding: 3px;
+            }
+
+            .step1-continue-btn:hover {
+                background-color: darken($tsmpink, 10%);
+                border: 1px solid darken($tsmpink, 10%);
+                cursor: pointer;
+                transition: all .2s ease;
+            }
+        }
     }
 }

@@ -43,7 +43,9 @@ export enum SubscriptionType {
 
 export enum SubscriptionFeature {
     ContentBasic =      "CONTENT_BASIC",
-    DeviceBasic =       "DEVICE_BASIC"
+    DeviceBasic =       "DEVICE_BASIC",
+    TimeBasic =         "TIME_BASIC",
+    TimeHourBlocks =    "TIME_HOUR_BLOCKS",
 }
 
 

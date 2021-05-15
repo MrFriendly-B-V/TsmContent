@@ -56,13 +56,17 @@
 
             @include set-font($montserrat);
 
-            input {
+            input, textarea {
                 padding: 5px;
                 margin-bottom: 5px;
                 border: 1px solid $tsmdark;
                 border-radius: 5px;
 
                 @include set-font($roboto, 300);
+            }
+
+            textarea {
+                resize: vertical;
             }
 
             .address-postal-number-holder {
@@ -101,7 +105,7 @@
             }
         }
 
-        #step1 {
+        #step1, #step2, #step3 {
             .blockSelection {
                 display: flex;
                 flex-direction: row;
@@ -133,7 +137,7 @@
                 }
             }
 
-            .step1-continue-btn {
+            .continue-btn {
                 margin-top: 3px;
                 background-color: $tsmpink;
                 border: 1px solid $tsmpink;
@@ -144,7 +148,7 @@
                 padding: 3px;
             }
 
-            .step1-continue-btn:hover {
+            .continue-btn:hover {
                 background-color: darken($tsmpink, 10%);
                 border: 1px solid darken($tsmpink, 10%);
                 cursor: pointer;

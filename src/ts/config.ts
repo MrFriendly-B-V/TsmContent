@@ -14,6 +14,8 @@ export const GET_SUBSCRIBTION_ENDPOINT = "https://subscription.api.twinsight.med
 
 //ContentServer
 export const GET_USER_CONTENT_ENDPOINT = "http://192.168.1.7:9000/content/get";
+export const UPLOAD_USER_CONTENT_ENDPOINT = "https://192.168.1.7:9000/content/upload";
+export const SET_CONTENT_DETAILS_ENDPOINT = "https://192.168.1.7:9000/content/details";
 
 //LocationServer
 export const GET_USER_LOCATIONS_ENDPOINT = "https://location.api.twinsight.media/locations/get";

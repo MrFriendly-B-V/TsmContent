@@ -32,6 +32,21 @@ export function getCookie(name: string): string {
 }
 
 /**
+ * Generate a string of random characters
+ * @param length The length of the string
+ * @returns A random string
+ */
+export function randomString(length: number): string {
+    let result = new Array();
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for(let i = 0; i < length; i++) {
+        result.push(characters.charAt(Math.floor(Math.random() * characters.length)));
+    }
+
+    return result.join("");
+}
+
+/**
  * Get the value of a GET parameter
  * @param parameterName The name of the parameter
  * @returns The value of the requested parameter. Null if parameter doesn't exist

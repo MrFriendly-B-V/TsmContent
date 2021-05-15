@@ -70,14 +70,32 @@
                         <h2> Select where you want your content to be displayed </h2>
                     </div>
 
-                    <!--Upload the content-->
+                    <!--Content time selection -->
                     <div id="step2" class="defaultNoShow" aria-hidden="true">
-
+                        <h2> Select when you want your content to be displayed</h2>
+                        <div id="step2StatusField" class="statusField"></div>
+                        <div id="step2ElementHolder">
+                            <div id="step2DayBlockholder"></div>
+                            <div id="step2TimeslotHolder"></div>
+                        </div>
                     </div>
 
-                    <!--Payment-->
+                    <!--Upload the content-->
                     <div id="step3" class="defaultNoShow" aria-hidden="true">
+                        <div id="step3StatusField" class="statusField"></div>
+                        <form id="step3EnterVideoDetails">
+                            <label for="videoName">Name<span class="red-text">*</span></label>
+                            <input type="text" name="videoName" placeholder="Give your content a name so you can identify it later.">
 
+                            <label for="videoDescription">Description</label>
+                            <textarea type="text" name="videoDescription" rows="5" placeholder="Describe your content so you can identify it later."></textarea>
+                        </form>
+                        <form id="step3VideoUpload" hidden aria-hidden="true">
+                            <input type="text" name="contentIdentifier" id="contentIdentifier" hidden aria-hidden="true">
+                            <input type="file" name="uploadContent" id="uploadContent" hidden aria-hidden="true" accept="video/*,image/*">
+                        </form>
+                        <button id='upload-btn'>Upload content</button>
+                        <button id="step3ContinueButton" class="continue-btn">Continue</button> 
                     </div>
                 </div>
             </div>

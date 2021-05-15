@@ -3,8 +3,6 @@ import * as Util from "../util";
 import * as $ from "jquery";
 import * as Types from "../types";
 
-
-
 //TODO temporary code
 class SubscriptionResponse implements Types.ISubscriptionResponse {
     status:                 number;
@@ -73,6 +71,7 @@ export function loadDashboard() {
 
                     sectionHolder.appendChild(headerDiv);
                     sectionHolder.appendChild(contentDiv);
+                    
                     //Load the user's content
                     let loadUserContentReq = $.ajax({
                         url: Config.GET_USER_CONTENT_ENDPOINT,
@@ -95,5 +94,5 @@ export function loadDashboard() {
             }
         }
 
-    }, "/pages/content-manager/home.html");
+    }, btoa("/pages/content-manager/home.html"));
 }

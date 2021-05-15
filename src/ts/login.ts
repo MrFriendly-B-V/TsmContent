@@ -113,7 +113,7 @@ function setupLoginPage() {
                 return;        
             }
 
-            window.location.href = from_param;
+            window.location.href = atob(from_param);
         });
     });
 }
@@ -239,7 +239,7 @@ function setupRegisterPage() {
                 return;        
             }
 
-            window.location.href = from_param;
+            window.location.href = btoa(from_param);
         });
     });
 }

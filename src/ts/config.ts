@@ -13,9 +13,9 @@ export const NEW_USER_ENDPOINT = "https://user.api.twinsight.media/user/new";
 export const GET_SUBSCRIBTION_ENDPOINT = "https://subscription.api.twinsight.media/subscription/get";
 
 //ContentServer
-export const GET_USER_CONTENT_ENDPOINT = "http://192.168.1.7:9000/content/get";
-export const UPLOAD_USER_CONTENT_ENDPOINT = "https://192.168.1.7:9000/content/upload";
-export const SET_CONTENT_DETAILS_ENDPOINT = "https://192.168.1.7:9000/content/details";
+export const GET_USER_CONTENT_ENDPOINT = "http://192.168.1.7:8000/content/get";
+export const UPLOAD_USER_CONTENT_ENDPOINT = "http://192.168.1.7:8080/content/upload";
+export const SET_CONTENT_DETAILS_ENDPOINT = "http://192.168.1.7:8080/content/details";
 
 //LocationServer
 export const GET_USER_LOCATIONS_ENDPOINT = "https://location.api.twinsight.media/locations/get";

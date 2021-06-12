@@ -61,8 +61,8 @@ export function step0() {
     step0holder.classList.remove("defaultNoShow");
     step0holder.setAttribute("aria-hidden", "false");
 
-    let continueButton = document.getElementById("step0ContinueBtn");
-    continueButton.addEventListener("click", function(e) {
+    document.getElementById('step0PreviousBtn').addEventListener("click", (_e) => window.location.href = "/pages/content-manager/home.html");
+    document.getElementById("step0ContinueBtn").addEventListener("click", function(e) {
         let form = <IUserDetailsForm> document.getElementById("userDetailsForm");
 
         //Validate the form

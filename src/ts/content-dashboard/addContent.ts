@@ -4,6 +4,7 @@ import {step0} from "./load-content/step0";
 import {step1} from "./load-content/step1";
 import {step2} from "./load-content/step2";
 import {step3} from "./load-content/step3";
+import {step4} from "./load-content/step4";
 
 export function loadAddContent() {
 
@@ -37,6 +38,9 @@ export function loadAddContent() {
         //Content upload
         case 3:
             step3();
+            break;
+        case 4:
+            step4();
             break;
     }
 }

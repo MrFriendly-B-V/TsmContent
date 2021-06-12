@@ -40,7 +40,7 @@ export function step1() {
                     ownedLocationsDiv.id = "ownedLocationsDiv";
                     ownedLocationsDiv.classList.value = "blockSelection";
 
-                    document.getElementById("step1").appendChild(ownedLocationsDiv);
+                    document.getElementById("step1ElementHolder").appendChild(ownedLocationsDiv);
 
                     //
                     let userLocationsReq = $.ajax({
@@ -104,11 +104,8 @@ export function step1() {
             }
         }
 
-        let continueToStep2Button = document.createElement("button")
-        continueToStep2Button.classList.value = "continue-btn";
-        continueToStep2Button.innerHTML = "Continue";
-
-        continueToStep2Button.addEventListener("click", (_e) => {
+        document.getElementById('step1PreviousBtn').addEventListener("click", (_e) => window.location.href = "/pages/content-manager/add-content.html?step=0");
+        document.getElementById('step1ContinueBtn').addEventListener("click", (_e) => {
             let selectedLocations = document.querySelectorAll("[data-selected=true]");
             let selectedLocationsIds: string[] = new Array();
 
@@ -120,8 +117,6 @@ export function step1() {
 
             window.location.href = "/pages/content-manager/add-content.html?step=2";
         });
-
-        document.getElementById("step1").appendChild(continueToStep2Button);
     });
 
     loadUserSubscription.fail(function(e) {

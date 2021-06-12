@@ -53,7 +53,7 @@ export function loadDashboard() {
                 
                     let header = document.createElement("h2");
                     header.classList.value = "sectionHeader";
-                    header.innerHTML = "Content";
+                    header.innerHTML = "My Content";
 
                     let newContentButton = document.createElement("button");
                     newContentButton.classList.value = "newElementButton";

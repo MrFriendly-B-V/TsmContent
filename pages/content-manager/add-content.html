@@ -29,7 +29,7 @@
                 <div class="new-content-page-holder" id="contentHolder">
                     <!--Personal details-->
                     <div id="step0" class="defaultNoShow" aria-hidden="true">
-                        <h2>Before you continue, we need some more details</h2>
+                        <h2>Your Details</h2>
                         <form name="userDetailsForm" id="userDetailsForm" class="enterUserDetails" method="POST">
                             <div id="step0StatusField" class="statusField"></div>
                             <label for="full_name">Full name<span class="red-text">*</span></label>
@@ -61,13 +61,21 @@
                                 <option value="NULL">Select...</option>
                                 <option value="NL">The Netherlands</option>
                             </select>
-                            <input type="button" class="submitBtn" aria-label="Continue" value="Continue" id="step0ContinueBtn">
                         </form>
+                        <div class="addContentBtnHolder">
+                            <button class="continue-btn previous" aria-label="Back" id="step0PreviousBtn">Return</button>
+                            <button class="continue-btn next" aria-label="Continue" id="step0ContinueBtn">Continue</button>
+                        </div>
                     </div>
 
                     <!--Content target selection-->
                     <div id="step1" class="defaultNoShow" aria-hidden="true">
                         <h2> Select where you want your content to be displayed </h2>
+                        <div id="step1ElementHolder"></div>
+                        <div class="addContentBtnHolder">
+                            <button class="continue-btn previous" aria-label="Back" id="step1PreviousBtn">Previous</button>
+                            <button class="continue-btn next" aria-label="Continue" id="step1ContinueBtn">Continue</button>
+                        </div>
                     </div>
 
                     <!--Content time selection -->
@@ -78,10 +86,17 @@
                             <div id="step2DayBlockholder"></div>
                             <div id="step2TimeslotHolder"></div>
                         </div>
+
+                        <button id="step2ResetBtn"> Reset </button>
+                        <div class="addContentBtnHolder">
+                            <button class="continue-btn previous" aria-label="Back" id="step2PreviousBtn">Previous</button>
+                            <button class="continue-btn next" aria-label="Continue" id="step2ContinueBtn">Continue</button>
+                        </div>
                     </div>
 
                     <!--Upload the content-->
                     <div id="step3" class="defaultNoShow" aria-hidden="true">
+                        <h2>Upload your Content</h2>
                         <div id="step3StatusField" class="statusField"></div>
                         <form id="step3EnterVideoDetails">
                             <label for="videoName">Name<span class="red-text">*</span></label>
@@ -91,11 +106,23 @@
                             <textarea type="text" name="videoDescription" rows="5" placeholder="Describe your content so you can identify it later."></textarea>
                         </form>
                         <form id="step3VideoUpload" hidden aria-hidden="true">
-                            <input type="text" name="contentIdentifier" id="contentIdentifier" hidden aria-hidden="true">
                             <input type="file" name="uploadContent" id="uploadContent" hidden aria-hidden="true" accept="video/*,image/*">
                         </form>
-                        <button id='upload-btn'>Upload content</button>
-                        <button id="step3ContinueButton" class="continue-btn">Continue</button> 
+                        <div class="uploadHolder">
+                            <button id='upload-btn'>Upload content</button>
+                            <p id="step3UploadFileName"></p>
+                        </div>
+                        <div class="addContentBtnHolder">
+                            <button class="continue-btn previous" aria-label="Back" id="step3PreviousBtn">Previous</button>
+                            <button class="continue-btn next" aria-label="Continue" id="step3ContinueBtn">Continue</button>
+                        </div>                    </div>
+
+                    <!--Success screen-->
+                    <div id="step4" class="defaultNoShow" aria-hidden="true">
+                        <div id="step4StatusField"></div>
+                        <div class="addContentBtnHolder">
+                            <button class="continue-btn next" aria-label="Continue" id="step4ContinueBtn">Continue</button>
+                        </div>
                     </div>
                 </div>
             </div>

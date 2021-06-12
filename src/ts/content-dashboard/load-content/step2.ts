@@ -32,31 +32,15 @@ export function step2() {
         
         //TODO Mocking the API here, since the two subscription features dont yet exist on the server
         subscriptionResponse.subscription_features = [ Types.SubscriptionFeature.TimeBasic, Types.SubscriptionFeature.TimeHourBlocks ];
+        loadSubscriptionEnabledFeatures(subscriptionResponse.subscription_features);
 
-        for(let i = 0; i < subscriptionResponse.subscription_features.length; i++) {
-            let feature = subscriptionResponse.subscription_features[i];
-            switch(feature) {
+        document.getElementById('step2ResetBtn').addEventListener("click", (_e) => {
+            removeTimeSelectFeature(null);
+            loadSubscriptionEnabledFeatures(subscriptionResponse.subscription_features);
+        });
 
-                //This feature flag allows a user to only select basic day blocks
-                //E.g 'Morning', 'Afternoon', etc
-                case Types.SubscriptionFeature.TimeBasic:
-                    await loadFeatureTimeBasic();
-                    break;
-
-                //This feature flag allows a user to select time slots,
-                //E.g 1PM-2PM, 1PM-4PM etc. Users can select multiple too.
-                case Types.SubscriptionFeature.TimeHourBlocks:
-                    loadFeatureTimeHourBlocks();
-                    break;
-            }
-        }
-        
-        //Create a button via which the user can proceed to the next step
-        let continueToStep3Button = document.createElement('button');
-        continueToStep3Button.classList.value = "continue-btn";
-        continueToStep3Button.innerHTML = "Continue";
-
-        continueToStep3Button.addEventListener("click", (_e) => {
+        document.getElementById('step2PreviousBtn').addEventListener("click", (_e) => window.location.href = "/pages/content-manager/add-content.html?step=1");
+        document.getElementById('step2ContinueBtn').addEventListener("click", (_e) => {
             let anyTimeSelected = false;
 
             dayblocks: {
@@ -110,7 +94,6 @@ export function step2() {
         });
         
         const STEP_2_HOLDER = document.getElementById('step2');
-        STEP_2_HOLDER.appendChild(continueToStep3Button);
 
         //Make the Step2 holder visible
         STEP_2_HOLDER.classList.remove("defaultNoShow");
@@ -258,8 +241,30 @@ function removeTimeSelectFeature(keep: Types.SubscriptionFeature) {
     let items = document.querySelectorAll("*[data-feature-name]");
 
     items.forEach((item) => {
-        if(item.getAttribute("data-feature-name") != keep) {
+        if(keep != null && item.getAttribute("data-feature-name") != keep) {
+            item.remove();
+        } else if(keep == null) {
             item.remove();
         }
     });
+}
+
+async function loadSubscriptionEnabledFeatures(features: Types.SubscriptionFeature[]) {
+    for(let i = 0; i < features.length; i++) {
+        let feature = features[i];
+        switch(feature) {
+
+            //This feature flag allows a user to only select basic day blocks
+            //E.g 'Morning', 'Afternoon', etc
+            case Types.SubscriptionFeature.TimeBasic:
+                await loadFeatureTimeBasic();
+                break;
+
+            //This feature flag allows a user to select time slots,
+            //E.g 1PM-2PM, 1PM-4PM etc. Users can select multiple too.
+            case Types.SubscriptionFeature.TimeHourBlocks:
+                loadFeatureTimeHourBlocks();
+                break;
+        }
+    }
 }

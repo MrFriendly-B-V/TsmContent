@@ -49,6 +49,10 @@
             margin-bottom: 5px;
         }
 
+        .statusFieldNoBorder {
+            border: none !important;
+        }
+
         form {
             display: flex;
             flex-direction: column;
@@ -105,7 +109,55 @@
             }
         }
 
-        #step1, #step2, #step3 {
+        #step2 {
+            & > button {
+                margin-top: 6px;
+                background-color: #FFF;
+                border: 1px solid $tsmdark;
+                border-radius: 5px;
+                color: #000;
+                padding: 4px 6px 4px 6px;
+            }
+
+            & > button:hover {
+                border: 1px solid $tsmpink;
+            }
+
+            .addContentBtnHolder {
+                .continue-btn {
+                    margin-top: 9px !important;
+                }
+            }
+        }
+
+        #step3 {
+            .uploadHolder {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
+                button {
+                    background-color: $tsmpink;
+                    border: 1px solid $tsmpink;
+                    border-radius: 5px;
+                    color: #FFF;
+                    padding: 5px 3px 5px 3px;
+                }
+
+                button:hover {
+                    background-color: darken($tsmpink, 10%);
+                    border: 1px solid darken($tsmpink, 10%);
+                }
+
+                p {
+                    margin: 0;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        #step0, #step1, #step2, #step3, #step4 {
             .blockSelection {
                 display: flex;
                 flex-direction: row;
@@ -134,25 +186,51 @@
 
                 .item-selected {
                     border: 1px solid $tsmpink;
+                    background-color: $tsmpink;
+                    color: white;
                 }
             }
 
-            .continue-btn {
-                margin-top: 3px;
-                background-color: $tsmpink;
-                border: 1px solid $tsmpink;
-                border-radius: 5px;
-                color: white;
-                transition: all .2s ease;
+            .addContentBtnHolder {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
                 width: 100%;
-                padding: 3px;
-            }
+                
+                .continue-btn {
+                    margin-top: 16px;
 
-            .continue-btn:hover {
-                background-color: darken($tsmpink, 10%);
-                border: 1px solid darken($tsmpink, 10%);
-                cursor: pointer;
-                transition: all .2s ease;
+                    border-radius: 5px;
+                    color: white;
+                    transition: all .2s ease;
+                    width: 40%;
+                    padding: 3px;
+                }
+
+                .continue-btn:hover {
+                    cursor: pointer;
+                    transition: all .2s ease;
+                }
+
+                .next {
+                    background-color: $tsmpink;
+                    border: 1px solid $tsmpink;
+                }
+
+                .next:hover {
+                    background-color: darken($tsmpink, 10%);
+                    border: 1px solid darken($tsmpink, 10%);
+                }
+
+                .previous {
+                    background-color: #FFF;
+                    border: 1px solid $tsmdark;
+                    color: #000;
+                }
+                
+                .previous:hover {
+                    border: 1px solid $tsmpink;
+                }
             }
         }
     }

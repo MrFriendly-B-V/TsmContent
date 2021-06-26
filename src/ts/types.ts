@@ -50,7 +50,24 @@ export enum SubscriptionFeature {
 
 
 //ContenServer
+export interface IContentResponse {
+    status:         number,
+    content:        IContentElement[]
+}
 
+export interface IContentElement {
+    id:             string,
+    name:           string,
+    description:    string,
+    locations:      string[],
+    day_blocks:     string[],
+    time_slots:     string[]
+}
+
+export interface IImageResponse {
+    status:         number,
+    data:           string
+}
 
 //LocationServer
 export interface IGetUserLocationsResponse {

@@ -1,10 +1,10 @@
-import * as Util from "../util";
+import * as Util from "../../util";
 
-import {step0} from "./load-content/step0";
-import {step1} from "./load-content/step1";
-import {step2} from "./load-content/step2";
-import {step3} from "./load-content/step3";
-import {step4} from "./load-content/step4";
+import {step0} from "../add-content/step0";
+import {step1} from "../add-content/step1";
+import {step2} from "../add-content/step2";
+import {step3} from "../add-content/step3";
+import {step4} from "../add-content/step4";
 
 export function loadAddContent() {
 

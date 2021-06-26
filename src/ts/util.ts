@@ -64,7 +64,7 @@ export function randomString(length: number): string {
     return result;
 }
 
-export function isLoggedIn(callback: (isLoggedIn: boolean, response: Types.ISessionCheckResponse) => any, from_redirect: string = ""): void {
+export async function isLoggedIn(callback: (isLoggedIn: boolean, response: Types.ISessionCheckResponse) => any, from_redirect: string = "") {
     let session_id = getCookie("sessionid");
     if(session_id == null || session_id == "") {
         if(from_redirect != "") {

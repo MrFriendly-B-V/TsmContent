@@ -9,31 +9,83 @@
             @include set-font($roboto, 400);
         }
 
-        .sectionHeaderHolder {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            place-items: center;
+        .contentSection {
+            .sectionHeader {
+                display: flex;
+                flex-direction: row;
+                place-items: center;
 
-            .newElementButton {
-                margin-left: 5px;
+                button {
+                    margin-left: 5px;
+                    background-color: $tsmpink;
+                    border: 1px solid $tsmpink;
+                    border-radius: 3px;
+                    width: 25px;
+                    height: 25px;
+                    color: $tsmwhite;
+                }
 
-                background-color: $tsmpink;
-                border: 1px solid $tsmpink;
-                border-radius: 3px;
-
-                width: 25px;
-                height: 25px;
-
-                color: $tsmwhite;
+                button:hover {
+                    background-color: darken($tsmpink, 10%);
+                    border: 1px solid darken($tsmpink, 10%);
+                    cursor: pointer;
+                    transition: .2s all cubic-bezier(0.075, 0.82, 0.165, 1);
+                }
             }
 
-            .newElementButton:hover {
-                background-color: darken($tsmpink, 10%);
-                border: 1px solid darken($tsmpink, 10%);
-                cursor: pointer;
-                transition: .2s all cubic-bezier(0.075, 0.82, 0.165, 1);
+            .sectionBlockList {
+                display: flex;
+                flex-direction: row;
+                flex: 1;
+                overflow: auto;
+                width: 99%;
+
+                .contentElement {
+                    margin: 5px;
+                    width: min-content;
+                    min-height: min-content;
+                    padding: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    place-items: center;
+                    background-color: $tsmwhite;
+                    border: 1px solid $tsmwhite;
+                    border-radius: 5px;
+
+                    img {
+                        height: 12rem;
+                        max-width: 18rem;
+                        width: auto;
+                        object-fit: scale-down;
+                    }
+
+                    -webkit-box-shadow: 5px 5px 30px -13px rgba(0,0,0,0.6); 
+                    box-shadow: 5px 5px 30px -13px rgba(0,0,0,0.6);
+                }
+
+                .contentElement:hover {
+                    margin-top: -5px;
+                    cursor: pointer;
+                    transition: all .2s cubic-bezier(0.420, 0.000, 0.580, 1.000)
+                }
             }
         }
     }
+}
+
+::-webkit-scrollbar {
+    height: 10px;   // Horizontal scrollbar
+    width: 10px;    // Vertical scrollbar
+}
+
+::-webkit-scrollbar-track {
+    margin: 3px;
+    background: lightgray;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

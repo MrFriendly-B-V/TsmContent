@@ -88,6 +88,8 @@ export async function step3() {
             }
         });
 
+        await videoDetailsReq;
+
         let videoUploadReq = $.ajax({
             method: 'POST',
             url: Config.UPLOAD_USER_CONTENT_ENDPOINT + "/" + videoIdentifier,

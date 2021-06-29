@@ -79,3 +79,10 @@ export interface ILocation {
     id:             string;
     name:           string;
 }
+
+// Local config
+export interface IDayBlockConfig {
+    name:       string;
+    start:      string;
+    end:        string;
+}

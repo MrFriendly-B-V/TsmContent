@@ -1,6 +1,9 @@
 @forward "./nav.scss";
+
 @forward "./content-manager/home.scss";
 @forward "./content-manager/add-content.scss";
+@forward "./content-manager/view-content-item.scss";
+
 @forward "./login/login.scss";
 
 @use "./util/animation.scss";

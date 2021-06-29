@@ -22,8 +22,6 @@ export async function loadUserContent() {
     getContentReq.done(e => {
         const CONTENT_SECTION = document.getElementById('contentList');
         let r = <Types.IContentResponse> JSON.parse(e);
-        console.log(r);
-
         for(let i = 0; i < r.content.length; i++) {
 
             let contentEntry = r.content[i];
@@ -45,25 +43,40 @@ export async function loadUserContent() {
             contentDomElement.appendChild(titleDomElement);
 
             contentDomElement.addEventListener("click", _e => {
-                //TODO
-                alert("Opening content " + contentDomElement.id);
+                window.sessionStorage.setItem("CONTENT_ITEM_THUMBNAIL", thumbnailDomElement.src);
+                window.sessionStorage.setItem("CONTENT_ITEM_ID", contentEntry.id);
+                window.location.href = "/pages/content-manager/view-content-item.html";
             });
 
             CONTENT_SECTION.appendChild(contentDomElement);
 
-            $.ajax({
+            let thumbnailRequest = $.ajax({
                 url: Config.GET_CONTENT_THUMBNAIL_ENDPOINT + "/" + contentEntry.id,
                 method: 'GET',
                 headers: {
                     'X-Session-Id': Util.getCookie("sessionid")
                 }
-            }).then(e => {
-                let r = <Types.IImageResponse> JSON.parse(e);
+            });
 
+            thumbnailRequest.done(e => {
+                let r = <Types.IImageResponse> JSON.parse(e);
                 if(r.status == 200) {
-                    thumbnailDomElement.src = "data:image/png;base64, " + r.data;            
+                    if(r.data != "") {
+                        thumbnailDomElement.src = "data:image/png;base64, " + r.data;            
+                    } else {
+                        thumbnailDomElement.src = "/img/cross_icon.png";
+                        thumbnailDomElement.title = "Failed to load image!";
+                    }
+                } else {
+                    thumbnailDomElement.src = "/img/cross_icon.png";
+                    thumbnailDomElement.title = "Failed to load image!";
                 }
             })
+
+            thumbnailRequest.fail(_e => {
+                thumbnailDomElement.src = "/img/cross_icon.png";
+                thumbnailDomElement.title = "Failed to load image!";
+            });
         }
     });
 

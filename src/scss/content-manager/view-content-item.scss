@@ -1,0 +1,77 @@
+@use "../util/fonts" as *;
+@use "../util/color" as *;
+
+.root {
+    .view-content-item-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .pageContent {
+            margin-top: 3rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            background-color: $tsmwhite;
+            border: 1px solid $tsmwhite;
+            border-radius: 5px;
+            min-width: 60vw;
+
+            -webkit-box-shadow: 5px 5px 30px -13px rgba(0,0,0,0.6); 
+            box-shadow: 5px 5px 30px -13px rgba(0,0,0,0.6);
+
+            .header {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+
+                .left {
+                    margin-right: 3rem;
+                    img {
+                        height: 20rem;
+                        max-width: 40rem;
+                    }
+                }
+
+                .right {
+                    h2, p, h3 {
+                        @include set-font($roboto)
+                    }
+
+                    .blockSelector {
+                        display: flex;
+                        flex-direction: row;
+
+                        div {
+                            border: 1px solid $tsmpink;
+                            border-radius: 5px;
+
+                            padding: 10px;
+                            margin-right: 5px;
+                            margin-bottom: 5px;
+
+                            user-select: none;
+                            -moz-user-select: none;
+                            -ms-user-select: none;
+                            -webkit-user-select: none;
+                        }
+
+                        div.item-selected {
+                            border: 1px solid $tsmpink;
+                            background-color: $tsmpink;
+                            color: white;
+                        }
+
+                        div:hover {
+                            border: 1px solid $tsmpink;
+                            cursor: pointer;
+        
+                            transition: .5s ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

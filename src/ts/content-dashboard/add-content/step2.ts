@@ -167,12 +167,6 @@ function loadFeatureTimeHourBlocks() {
  */
 async function loadFeatureTimeBasic() {
     const STEP_2_HOLDER = document.getElementById("step2DayBlockholder");
-
-    interface IDayBlockConfig {
-        name:       string;
-        start:      string;
-        end:        string;
-    }
     
     //Fetch the configuration for the Day Blocks
     let getDayBlockConfigReq = $.ajax({
@@ -192,7 +186,7 @@ async function loadFeatureTimeBasic() {
     datBlockHolder.setAttribute("data-feature-name", "TIME_BASIC");
     datBlockHolder.classList.value = "blockSelection";
 
-    let result = <IDayBlockConfig[]> await getDayBlockConfigReq;
+    let result = <Types.IDayBlockConfig[]> await getDayBlockConfigReq;
 
     for(let i = 0; i < result.length; i++) {
         let dayBlockConfigEntry = result[i];

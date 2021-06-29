@@ -4,4 +4,5 @@ import "../scss/index.scss";
 //TS Source files
 export { setupLogin } from "./login";
 export { loadDashboard } from "./content-dashboard/loadDashboard"
-export { loadAddContent } from "./content-dashboard/my-content/addContent"; 
+export { loadAddContent } from "./content-dashboard/my-content/addContent";
+export { loadContentItem } from "./content-dashboard/my-content/viewContentItem";

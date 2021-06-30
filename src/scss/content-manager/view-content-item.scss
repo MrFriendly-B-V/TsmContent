@@ -72,6 +72,28 @@
                     }
                 }
             }
+
+            .buttons {
+                display: flex;
+                flex-direction: row;
+
+                button {
+                    margin-top: 0.5rem;
+                    margin-right: 0.5rem;
+
+                    background-color: $tsmpink;
+                    border: 1px solid $tsmpink;
+                    border-radius: 5px;
+                    color: #FFF;
+                    padding: 5px 3px 5px 3px;
+                }
+
+                button:hover {
+                    background-color: darken($tsmpink, 10%);
+                    border: 1px solid darken($tsmpink, 10%);
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

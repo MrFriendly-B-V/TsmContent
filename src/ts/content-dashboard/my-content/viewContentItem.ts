@@ -1,7 +1,6 @@
 import * as Util from "../../util";
 import * as Config from "../../config";
 import * as Types from "../../types";
-import { Configuration } from "../../../../node_modules/webpack/types";
 
 export async function loadContentItem() {
     let id = window.sessionStorage.getItem("CONTENT_ITEM_ID");
@@ -38,8 +37,43 @@ export async function loadContentItem() {
         DESCRIPTION.innerHTML = content.description;
         
         const LOCATIONS = <HTMLElement> document.getElementById("locations");
-        content.locations.forEach(location => {
-            //TODO get location names and show t hem
+        let userLocationsReq = $.ajax({
+            url: Config.GET_USER_LOCATIONS_ENDPOINT,
+            method: 'POST',
+            data: {
+                session_id: Util.getCookie("sessionid")
+            }
+        });
+
+        userLocationsReq.then((e) => {
+            let r = <Types.IGetUserLocationsResponse> e;
+            if(r.status == 200) {
+                r.locations.forEach(location => {
+                    let locationBlock = document.createElement('div');
+                    locationBlock.innerHTML = location.name;
+                    locationBlock.id = location.id;
+
+                    content.locations.forEach(locationSelected => {
+                        if(location.id == locationSelected) {
+                            locationBlock.classList.value = "item-selected";
+                            locationBlock.setAttribute("data-location-selected", "true");    
+                        }
+                    });
+
+                    locationBlock.addEventListener("click", _e => {
+                        let isSelected = (locationBlock.getAttribute("data-location-selected") == "true") ? true : false;
+                        if(isSelected) {
+                            locationBlock.setAttribute("data-location-selected", "false");
+                            locationBlock.classList.remove("item-selected");
+                        } else {
+                            locationBlock.setAttribute("data-location-selected", "true");
+                            locationBlock.classList.add("item-selected");
+                        }
+                    });
+
+                    LOCATIONS.appendChild(locationBlock);
+                });
+            }
         });
 
         const TIME_BLOCKS = <HTMLElement> document.getElementById('time-blocks');
@@ -78,5 +112,35 @@ export async function loadContentItem() {
                 TIME_BLOCKS.appendChild(timeBlockElement);
             });
         });
-    })
+    });
+
+    document.getElementById('returnBtn').addEventListener("click", _e => window.location.href = "/pages/content-manager/home.html");
+    document.getElementById('saveBtn').addEventListener("click", _e => {
+        let selectedLocations: string[] = new Array();
+        document.querySelectorAll("[data-location-selected=true]").forEach(selectedLocation => {
+            selectedLocations.push(selectedLocation.id);
+        });
+
+        let selectedTimeBlocks: string[] = new Array();
+        document.querySelectorAll("[data-day-block-selected=true]").forEach(selectedTimeBlock => {
+            selectedTimeBlocks.push(selectedTimeBlock.innerHTML);
+        });
+
+        let updateContentReq = $.ajax({
+            url: Config.UPDATE_CONTENT_DETAILS_ENDPOINT + "/" + id,
+            method: 'POST',
+            headers: {
+                'X-Session-Id': Util.getCookie("sessionid")
+            },
+            data: {
+                locations: selectedLocations.join(","),
+                day_blocks: selectedTimeBlocks.join(",")   
+            }
+        });
+
+        updateContentReq.then(_e => {
+            window.location.href = "/pages/content-manager/home.html";
+            return;
+        });
+    });
 }

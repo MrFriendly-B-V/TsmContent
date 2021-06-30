@@ -17,6 +17,8 @@ export const GET_USER_CONTENT_ENDPOINT = "http://192.168.1.7:8080/content/get";
 export const UPLOAD_USER_CONTENT_ENDPOINT = "http://192.168.1.7:8080/content/upload";
 export const SET_CONTENT_DETAILS_ENDPOINT = "http://192.168.1.7:8080/content/details";
 export const GET_CONTENT_THUMBNAIL_ENDPOINT = "http://192.168.1.7:8080/content/image";
+export const UPDATE_CONTENT_DETAILS_ENDPOINT = "http://192.168.1.7:8080/content/update";
 
 //LocationServer
 export const GET_USER_LOCATIONS_ENDPOINT = "https://location.api.twinsight.media/locations/get";
+export const GET_LOCATION_DETAILS_ENDPOINT = "https://location.api.twinsight.media/locations";

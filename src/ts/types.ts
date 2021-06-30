@@ -80,6 +80,10 @@ export interface ILocation {
     name:           string;
 }
 
+export interface IGetLocationDetailsResponse {
+    name:           string
+}
+
 // Local config
 export interface IDayBlockConfig {
     name:       string;

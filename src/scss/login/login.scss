@@ -1,5 +1,6 @@
 @use "../util/fonts" as *;
-@use "../util/color.scss" as *;
+@use "../util/color" as *;
+@use "../util/shadow";
 
 .login-container {
     display: flex;
@@ -23,8 +24,7 @@
         margin-top: 7em;
         padding: 1.5em;
 
-        -webkit-box-shadow: 4px 4px 10px -3px rgba(0,0,0,0.84); 
-        box-shadow: 4px 4px 10px -3px rgba(0,0,0,0.84);
+        @include shadow.drop-shadow();
 
         .title {
             margin: 5px;

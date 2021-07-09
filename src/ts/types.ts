@@ -90,3 +90,14 @@ export interface IDayBlockConfig {
     start:      string;
     end:        string;
 }
+
+//Device Server
+export interface IDevice {
+    id:             string;
+    name:           string;
+    description:    string;
+}
+
+export interface IDeviceResponse {
+    devices:        IDevice[]
+}

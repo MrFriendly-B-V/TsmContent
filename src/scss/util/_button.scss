@@ -1,0 +1,20 @@
+@use "./color";
+
+@mixin add-item-button() {
+    button {
+        margin-left: 5px;
+        background-color: color.$tsmpink;
+        border: 1px solid color.$tsmpink;
+        border-radius: 3px;
+        width: 25px;
+        height: 25px;
+        color: color.$tsmwhite;
+    }
+
+    button:hover {
+        background-color: darken(color.$tsmpink, 10%);
+        border: 1px solid darken(color.$tsmpink, 10%);
+        cursor: pointer;
+        transition: .2s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+}

@@ -1,5 +1,6 @@
 @use "../util/fonts" as *;
 @use "../util/color" as *;
+@use "../util/shadow";
 
 .root {
     .view-content-item-container {
@@ -18,8 +19,7 @@
             border-radius: 5px;
             min-width: 60vw;
 
-            -webkit-box-shadow: 5px 5px 30px -13px rgba(0,0,0,0.6); 
-            box-shadow: 5px 5px 30px -13px rgba(0,0,0,0.6);
+            @include shadow.drop-shadow();
 
             .header {
                 display: flex;

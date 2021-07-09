@@ -26,30 +26,35 @@
         </nav>
         <main>
             <div class="root">
-                <div class="dashboard-container" id="sectionHolder">
-                    <div class="contentSection contentSection defaultHidden" id="contentSection">
-                        <div class="sectionHeader">
-                            <h2>My Content</h2>
-                            <button class="newElementButton" id="newContentBtn">+</button>
+                <div class="view-location-item">
+                    <div class="content">
+                        <div class="deviceInfo">
+                            <div>
+                                <img id="locationImage" src="/img/spinner.gif">
+                            </div>
+                            <div class="right">
+                                <div class="header">
+                                    <h2 id="name"></h2>
+                                    <p id="description"></p>
+                                </div>
+                                <div class="deviceHolder">
+                                    <div>
+                                        <h2>Devices</h2>
+                                        <button class="newElementButton" id="newDeviceBtn">+</button>
+                                    </div>
+                                    <ul id="currentDeviceList"></ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="sectionBlockList" id="contentList">
-
-                        </div>
-                    </div>
-                    <div class="locationSection contentSection defaultHidden" id="locationSection">
-                        <div class="sectionHeader">
-                            <h2>My Locations</h2>
-                            <button class="newElementButton" id="newLocationBtn">+</button>
-                        </div>
-                        <div class="sectionBlockList" id="locationList">
-
+                        <div>
+                            <button id="returnBtn">Return</button>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         <script>
-            TSM.loadDashboard();
+            TSM.loadLocationItem();
         </script>
     </body>
 </html>

@@ -1,5 +1,7 @@
 @use "../util/fonts" as *;
 @use "../util/color" as *;
+@use "../util/button";
+@use "../util/shadow";
 
 .root {
     .dashboard-container {
@@ -15,22 +17,7 @@
                 flex-direction: row;
                 place-items: center;
 
-                button {
-                    margin-left: 5px;
-                    background-color: $tsmpink;
-                    border: 1px solid $tsmpink;
-                    border-radius: 3px;
-                    width: 25px;
-                    height: 25px;
-                    color: $tsmwhite;
-                }
-
-                button:hover {
-                    background-color: darken($tsmpink, 10%);
-                    border: 1px solid darken($tsmpink, 10%);
-                    cursor: pointer;
-                    transition: .2s all cubic-bezier(0.075, 0.82, 0.165, 1);
-                }
+                @include button.add-item-button();
             }
 
             .sectionBlockList {
@@ -40,7 +27,7 @@
                 overflow: auto;
                 width: 99%;
 
-                .contentElement {
+                .sectionElement {
                     margin: 5px;
                     width: min-content;
                     min-height: min-content;
@@ -58,12 +45,15 @@
                         width: auto;
                         object-fit: scale-down;
                     }
+                
+                    @include shadow.drop-shadow();
 
-                    -webkit-box-shadow: 5px 5px 30px -13px rgba(0,0,0,0.6); 
-                    box-shadow: 5px 5px 30px -13px rgba(0,0,0,0.6);
+                    p {
+                        @include set-font($roboto);
+                    }
                 }
 
-                .contentElement:hover {
+                .sectionElement:hover {
                     margin-top: -5px;
                     cursor: pointer;
                     transition: all .2s cubic-bezier(0.420, 0.000, 0.580, 1.000)

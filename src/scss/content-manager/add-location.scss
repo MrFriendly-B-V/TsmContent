@@ -1,0 +1,96 @@
+@use "../util/fonts" as *;
+@use "../util/color" as *;
+@use "../util/shadow";
+
+.root {
+    .add-location {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .content {
+            background-color: $tsmwhite;
+            border: 1px solid $tsmdark;
+            border-radius: 5px;
+            @include shadow.drop-shadow();
+            @include set-font($roboto);
+
+            padding: 10px;
+            margin-top: 3rem;
+            min-width: 30vw;
+
+            .errorMessage {
+                color: $warningred;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+
+                input { 
+                    margin-bottom: 1rem;
+                    padding: 5px;
+                    border: 1px solid $tsmdark;
+                    border-radius: 5px;
+                }
+
+                .postal-code-number-holder {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    & > div {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    & > .address-number {
+                        justify-content: flex-end;
+                    }
+                }
+
+                .red-text {
+                    color: red;
+                }
+            }
+
+            .buttonHolder {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 1rem;
+
+                button {
+                    width: 40%;
+                    border-radius: 5px;
+                }
+
+                #returnBtn {
+                    border: 1px solid $tsmdark;
+                    background-color: $tsmwhite;
+                    color: $tsmdark;
+                }
+
+                #returnBtn:hover {
+                    border: 1px solid $tsmpink;
+                    cursor: pointer;
+                    transition: all .2s ease;
+                }
+
+                #saveBtn {
+                    border: 1px solid $tsmpink;
+                    background-color: $tsmpink;
+                    color: white;
+                }
+                
+                #saveBtn:hover {
+                    background-color: darken($tsmpink, 10%);
+                    border: 1px solid darken($tsmpink, 10%);
+                    cursor: pointer;
+                    transition: all .2s ease;
+                }
+            }
+
+        }
+    }
+}

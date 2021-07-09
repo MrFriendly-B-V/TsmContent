@@ -4,6 +4,7 @@ import * as $ from "jquery";
 import * as Types from "../types";
 
 import { loadUserContent } from "./my-content/loadContent";
+import { loadLocations } from "./my-locations/loadLocations";
 
 export async function loadDashboard() {
     //Check if the user is logged in
@@ -38,7 +39,7 @@ export async function loadDashboard() {
                     break;
 
                 case "DEVICE_BASIC":
-                    //TODO
+                    loadLocations()
                     break;
             }
         }

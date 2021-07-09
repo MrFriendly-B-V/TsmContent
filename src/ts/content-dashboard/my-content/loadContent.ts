@@ -27,10 +27,9 @@ export async function loadUserContent() {
             let contentEntry = r.content[i];
             let contentDomElement = document.createElement('div');
             contentDomElement.id = contentEntry.id;
-            contentDomElement.classList.value = "contentElement";
+            contentDomElement.classList.value = "contentElement sectionElement";
 
             let thumbnailDomElement = document.createElement('img');
-            //thumbnailDomElement.src = "data:image/png;base64, " + contentEntry.thumbnail;
             thumbnailDomElement.src = "/img/spinner.gif";
             thumbnailDomElement.alt = contentEntry.name + " Thumbnail Failed to load";
             thumbnailDomElement.classList.value = "contentElementThumbnail";

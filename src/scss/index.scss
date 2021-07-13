@@ -5,6 +5,7 @@
 @forward "./content-manager/view-content-item.scss";
 @forward "./content-manager/view-location-item.scss";
 @forward "./content-manager/add-location.scss";
+@forward "./content-manager/view-device-item.scss";
 
 @forward "./login/login.scss";
 
@@ -17,7 +18,7 @@ html, body {
     width: 100vw;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    //overflow: hidden;
     @include animation.fade-in(0.75s);
 
 }

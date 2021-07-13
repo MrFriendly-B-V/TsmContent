@@ -26,23 +26,20 @@
         </nav>
         <main>
             <div class="root">
-                <div class="view-location-item">
+                <div class="view-device-item">
                     <div class="content">
                         <div class="deviceInfo">
                             <div>
-                                <img id="locationImage" src="/img/location_icon.png">
+                                <img src="/img/monitor.png">
                             </div>
                             <div class="right">
                                 <div class="header">
                                     <h2 id="name"></h2>
                                     <p id="description"></p>
                                 </div>
-                                <div class="deviceHolder">
-                                    <div>
-                                        <h2>Devices</h2>
-                                        <button class="newElementButton" id="newDeviceBtn">+</button>
-                                    </div>
-                                    <ul id="currentDeviceList"></ul>
+                                <h2>Actions</h2>
+                                <div class="actions">
+                                    <button id="resetBtn">Reset</button>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +51,7 @@
             </div>
         </main>
         <script>
-            TSM.loadLocationItem();
+            TSM.loadDeviceItem();
         </script>
     </body>
 </html>

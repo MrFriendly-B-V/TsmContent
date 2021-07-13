@@ -19,6 +19,10 @@
             margin-top: 3rem;
             min-width: 30vw;
 
+            & > h2 {
+                margin-top: 0.5rem;
+            }
+
             .errorMessage {
                 color: $warningred;
             }

@@ -96,6 +96,7 @@ export interface IDevice {
     id:             string;
     name:           string;
     description:    string;
+    location_id:    string;
 }
 
 export interface IDeviceResponse {

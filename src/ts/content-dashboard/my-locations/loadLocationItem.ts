@@ -44,8 +44,7 @@ export async function loadLocationItem() {
             listItem.appendChild(nameElement);
 
             listItem.addEventListener("click", _e => {
-                //TODO show device information
-                alert(device.id);
+                window.location.href = "/pages/content-manager/view-device.html?id=" + device.id;
             });
 
             DEVICE_LIST.appendChild(listItem);

@@ -1,0 +1,80 @@
+@use "../util/fonts" as *;
+@use "../util/color" as *;
+@use "../util/button";
+@use "../util/shadow";
+
+.root {
+    .view-device-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            
+            min-width: 60vw;
+            max-width: 60vw;
+            height: auto;
+        
+            background-color: $tsmwhite;
+            border: 1px solid $tsmwhite;
+            padding: 5px;
+            margin-top: 3rem;
+
+            @include shadow.drop-shadow();
+
+            //Return button
+            & > div > button {
+                background-color: $tsmpink;
+                border: 1px solid $tsmpink;
+                border-radius: 2px;
+                padding: 3px;
+                color: white;
+            }
+
+            & > div > button:hover {
+                background-color: darken($tsmpink, 10%);
+                border: 1px solid darken($tsmpink, 10%);
+                cursor: pointer;
+            }
+
+            .deviceInfo {
+                display: flex;
+                flex-direction: row;
+
+                img {
+                    height: 20rem;
+                    max-width: 40rem;
+                }
+
+                & > div {
+                    margin: 5px;
+                }
+
+                .right {
+                    h2, p {
+                        @include set-font($roboto);
+                    }
+
+                    .actions {
+                        //Return button
+                        button {
+                            background-color: $tsmwhite;
+                            border: 1px solid $tsmdark;
+                            border-radius: 3px;
+                            padding: 5px;
+                            color: black;
+                        }
+
+                        button:hover {
+                            border: 1px solid $tsmpink;
+                            transition: .2s all ease;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

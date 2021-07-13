@@ -1,3 +1,6 @@
+import * as Config from "../../config";
+import * as Util from "../../util";
+
 interface IAddLocationForm extends HTMLFormElement {
     locationName:   HTMLInputElement;
     description:    HTMLInputElement;
@@ -49,7 +52,23 @@ export async function loadAddLocation() {
         ERROR_FIELD.classList.add('defaultNoShow');
 
         let addLocationReq = $.ajax({
-            
-        })
+            url: Config.ADD_LOCATION_ENDPOINT,
+            method: 'POST',
+            data: {
+                name: ADD_LOCATION_FORM.locationName.value,
+                description: ADD_LOCATION_FORM.description.value,
+                street: ADD_LOCATION_FORM.street.value,
+                postal: ADD_LOCATION_FORM.postal.value,
+                number: ADD_LOCATION_FORM.number.value,
+                country: countrySelector.value
+            },
+            headers: {
+                'X-Session-ID': Util.getCookie('sessionid')
+            }
+        });
+
+        addLocationReq.then(_e => {
+            window.location.href = "/pages/content-manager/home.html";
+        });
     });
 }

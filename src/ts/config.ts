@@ -22,6 +22,8 @@ export const UPDATE_CONTENT_DETAILS_ENDPOINT = "https://content.api.twinsight.me
 //LocationServer
 export const GET_USER_LOCATIONS_ENDPOINT = "https://location.api.twinsight.media/locations/get";
 export const GET_LOCATION_DETAILS_ENDPOINT = "https://location.api.twinsight.media/locations";
+export const ADD_LOCATION_ENDPOINT = "https://location.api.twinsight.media/locations/add";
 
 //DevicesServer
 export const GET_DEVICES_FOR_LOCATION_ENDPOINT = "http://localhost:8080/devices/location";
+export const GET_DEVICE_DETAILS_ENDPOINT = "http://localhost:8080/devices";

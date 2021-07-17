@@ -27,3 +27,4 @@ export const ADD_LOCATION_ENDPOINT = "https://location.api.twinsight.media/locat
 //DevicesServer
 export const GET_DEVICES_FOR_LOCATION_ENDPOINT = "http://localhost:8080/devices/location";
 export const GET_DEVICE_DETAILS_ENDPOINT = "http://localhost:8080/devices";
+export const ADD_DEVICE_ENDPOINT = "http://localhost:8080/devices/add";

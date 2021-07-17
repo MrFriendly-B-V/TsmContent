@@ -9,6 +9,8 @@ export async function loadLocationItem() {
         return;
     }
 
+    document.getElementById('newDeviceBtn').addEventListener("click", _e => window.location.href = "/pages/content-manager/add-device.html?parent=" + id);
+
     let locationDetailsReq = $.ajax({
         url: Config.GET_LOCATION_DETAILS_ENDPOINT + "/" + id,
         method: 'GET',

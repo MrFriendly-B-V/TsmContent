@@ -20,6 +20,8 @@ export function step2() {
         }
     });
 
+    document.getElementById('step2Tab').classList.value = "currentTab";
+
     loadUserSubscription.done(async (e) => {
         let subscriptionResponse = <Types.ISubscriptionResponse> e;
 

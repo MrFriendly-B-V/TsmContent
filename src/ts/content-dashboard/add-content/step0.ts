@@ -21,6 +21,8 @@ export function step0() {
         }
     });
 
+    document.getElementById('step0Tab').classList.value = "currentTab";
+
     getUserDetailsReq.done(function(e) {
         let userDetails = <Types.IGetUserDetailsResponse> e;
         if(userDetails.status != 200) {

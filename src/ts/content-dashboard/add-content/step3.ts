@@ -29,6 +29,8 @@ export async function step3() {
     STEP_3_HOLDER.setAttribute("aria-hidden", "false");
     const VIDEO_DETAILS_FORM = <IVideoDetailsForm> document.getElementById('step3EnterVideoDetails');
 
+    document.getElementById('step3Tab').classList.value = "currentTab";
+
     document.getElementById('upload-btn').addEventListener("click", (_e) => {
         document.getElementById('uploadContent').click();
     });

@@ -2,6 +2,32 @@
 @use "../util/color" as *;
 
 .root {
+    .addContentTabs {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 25px;
+
+        div {
+            border: 1px solid $tsmdark;
+            border-radius: 2px;
+            padding: 5px 10px 5px 10px;
+
+            @include set-font($roboto);
+        }
+        
+        .currentTab {
+            background-color: $tsmpink;
+            border: 1px solid $tsmpink;
+            color: white;
+        }
+
+        div:hover {
+            cursor: pointer;
+            transition: 0.2s all ease;
+        }
+    }
+
     .new-content-page-holder {
         display: flex;
         flex-direction: column;
